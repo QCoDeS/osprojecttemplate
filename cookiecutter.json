@@ -1,5 +1,9 @@
 {
-    "directory_name": "Hello",
-    "file_name": "Howdy",
-    "greeting_recipient": "Julie"
+    "directory_name": "DirBla",
+    "file_name": "Blala",
+    "greeting_recipient": "Blowww",
+    "subdirectory_name1": "SubDirBla",
+    "experiment_name": "Blariment",
+    "location_name": "BlaLand",
+    "repository_name": "Blatory"
 }
