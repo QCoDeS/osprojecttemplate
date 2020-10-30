@@ -1,5 +1,9 @@
 {
+    "package_name": "packagename",
+    "package_description": "package_description",
     "directory_name": "Hello",
     "file_name": "Howdy",
-    "greeting_recipient": "Julie"
+    "greeting_recipient": "Julie",
+    "author": "Rasmus Bjerregaard Christensen",
+    "author_email": "rbcmail@gmail.com"
 }
