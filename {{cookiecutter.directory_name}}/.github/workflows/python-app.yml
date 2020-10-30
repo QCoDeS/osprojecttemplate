@@ -1,0 +1,53 @@
+name: Python application
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ 3.7]
+    env:
+      DISPLAY: ':99.0'
+
+    steps:
+    - name: setup ubuntu-latest xvfb
+      run: |
+        sudo apt install libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0
+        /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1920x1200x24 -ac +extension GLX
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - uses: ./.github/actions/install-dependencies-and-{{cookiecutter.package_name}}
+    - name: disable_telemetry
+      shell: bash -l {0}
+      run: sed -i "s/\(enabled *= *\).*/\1False/" ./{{cookiecutter.package_name}}/conf/telemetry.ini
+
+    - name: Run Mypy
+      run: mypy {{cookiecutter.package_name}}
+    - name: Test with pytest
+      run: |
+        pytest ./{{cookiecutter.package_name}}/tests/
+    - uses: r-lib/actions/setup-pandoc@v1
+      with:
+        pandoc-version: '2.7.3' # The pandoc version to download (if necessary) and use.
+    - name: Build The Docs 
+      shell: bash  
+      run: |
+          cd docs &&
+          export SPHINXOPTS="-W -v"  &&
+          make html
+    - name: Upload build docs
+      uses: actions/upload-artifact@v2
+      with:
+        name: docs_${{ matrix.python-version }}
+        path: ${{ github.workspace }}/docs/_build/html
+
