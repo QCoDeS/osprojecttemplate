@@ -1,4 +1,4 @@
-Copyright (c) 2020 by Københavns Universitet.
+Copyright (c) {{cookiecutter.copyright}}.
 
 {{cookiecutter.package_name}} is available under the `MIT open-source
 license <https://opensource.org/licenses/MIT>`__ :

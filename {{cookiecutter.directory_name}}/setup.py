@@ -14,14 +14,14 @@ required_packages = ['opencensus-ext-azure']
 
 
 setup(
-    name={{cookiecutter.package_name}},
+    name="{{cookiecutter.package_name}}",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     python_requires=">=3.7",
     install_requires=required_packages,
-    author= {{cookiecutter.author}},
-    author_email={{cookiecutter.author_email}},
-    description={{cookiecutter.package_description}},
+    author= "{{cookiecutter.author}}",
+    author_email="{{cookiecutter.author_email}}",
+    description="{{cookiecutter.package_description}}",
     long_description=readme_file_path.open().read(),
     long_description_content_type="text/markdown",
     license="",

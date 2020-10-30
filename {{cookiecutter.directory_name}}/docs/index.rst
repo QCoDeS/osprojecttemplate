@@ -1,8 +1,8 @@
 *****************************************************************
-pulsequantum
+{{cookiecutter.package_name}}
 *****************************************************************
 
-Pulse building interface
+{{cookiecutter.package_description}}
 
 
 Documentation

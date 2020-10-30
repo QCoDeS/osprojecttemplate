@@ -1,9 +1,9 @@
 **************************************************
-pulsequantum API Documentation
+{{cookiecutter.package_name}} API Documentation
 **************************************************
 
 
-This page documents the pulsequantum API.
+This page documents the {{cookiecutter.package_name}} API.
 
 API
 ---

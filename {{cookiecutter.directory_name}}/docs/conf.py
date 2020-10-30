@@ -22,10 +22,10 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = {{cookiecutter.package_name}}
-copyright = {{cookiecutter.copyright}}
-author = {{cookiecutter.author}}
-project_description = {{cookiecutter.package_description}}
+project = "{{cookiecutter.package_name}}"
+copyright = "{{cookiecutter.copyright}}"
+author = "{{cookiecutter.author}}"
+project_description = "{{cookiecutter.package_description}}"
 
 # -- General configuration ---------------------------------------------------
 
