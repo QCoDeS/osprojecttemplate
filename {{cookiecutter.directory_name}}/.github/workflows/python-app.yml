@@ -15,7 +15,7 @@ jobs:
         python-version: [ 3.7]
     env:
       DISPLAY: ':99.0'
-
+{% raw %}
     steps:
     - name: setup ubuntu-latest xvfb
       run: |
@@ -25,13 +25,13 @@ jobs:
       with:
         persist-credentials: false
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v2 
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: ${{ matrix.python-version }} {% endraw %}
     - uses: ./.github/actions/install-dependencies-and-{{cookiecutter.package_name}}
     - name: disable_telemetry
       shell: bash -l {0}
-      run: sed -i "s/\(enabled *= *\).*/\1False/" ./{{cookiecutter.package_name}}/conf/telemetry.ini
+      run: sed -i "s/\(enabled *= *\).*/\1False/" ./{{cookiecutter.package_name}}m/conf/telemetry.ini
 
     - name: Run Mypy
       run: mypy {{cookiecutter.package_name}}
@@ -50,12 +50,14 @@ jobs:
           
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.6.2
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with: {% raw %}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} {% endraw %}        
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: _docs # The folder the action should deploy.
         CLEAN: true # Automatically remove deleted files from the deploy branch
 
+
+     
 
 
 
