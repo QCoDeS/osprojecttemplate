@@ -10,7 +10,7 @@ import versioneer
 readme_file_path = Path(__file__).absolute().parent / "README.md"
 
 required_packages = ['opencensus-ext-azure']
-
+package_data = {% raw %}{{% endraw %}"{{cookiecutter.package_name}}": ["conf/telemetry.ini"] {% raw %}}{% endraw %}
 
 
 setup(

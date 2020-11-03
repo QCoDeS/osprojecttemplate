@@ -7,7 +7,7 @@ import platform
 from opencensus.ext.azure.log_exporter import AzureLogHandler
 from opencensus.ext.azure.common.protocol import Envelope
 
-import {{cookiecutter.package_name}}as ccp
+import {{cookiecutter.package_name}} as ccp
 import {{cookiecutter.package_name}}
 
 telemetry_handler: Optional[AzureLogHandler] = None
